@@ -1,6 +1,16 @@
 import { colors } from '@material-ui/core';
 
-const pallete = {
+const white = '#FFFFFF';
+
+const palette = {
+  white,
+  topBar: {
+    main: colors.indigo[900],
+    secondary: colors.indigo[900]
+  },
+  primarySelected: {
+    main: colors.blue[200]
+  },
   primary: {
     contrastText: white,
     dark: colors.indigo[900],
@@ -9,9 +19,9 @@ const pallete = {
   },
   secondary: {
     contrastText: white,
-    dark: colors.lightBlue[900],
-    main: colors.lightBlue['A400'],
-    light: colors.lightBlue['A400']
+    dark: colors.yellow[900],
+    main: colors.yellow['A400'],
+    light: colors.yellow['A400']
   },
   error: {
     contrastText: white,
@@ -21,4 +31,4 @@ const pallete = {
   },
 };
 
-export default pallete
+export default palette
