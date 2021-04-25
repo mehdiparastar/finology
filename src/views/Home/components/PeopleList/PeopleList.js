@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
         color: theme.palette.topBar.main,
         fontWeight: 'bold',
         maxWidth: theme.spacing(40),
-        lineHeight: theme.spacing(0.2)
+        lineHeight: theme.spacing(0.2),        
     },
 
     slider: {

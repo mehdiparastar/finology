@@ -1,3 +1,5 @@
+@import '~react-perfect-scrollbar/dist/css/styles.css';
+
 @font-face {
   font-family: 'Nunito Regular';
   src: url('../assets/fonts/Nunito-Regular.ttf');
@@ -34,6 +36,9 @@
 
 html {
   height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -41,4 +46,14 @@ html {
 body {
   // background-color: #f4f6f8;
   height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }

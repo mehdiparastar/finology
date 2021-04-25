@@ -10,6 +10,7 @@ import { Container, LinearProgress } from '@material-ui/core';
 import { renderRoutes } from 'react-router-config'
 import { makeStyles } from '@material-ui/styles';
 import bannerShape from '../../assets/images/bannerShape.svg'
+import PerfectScrollbar from 'react-perfect-scrollbar'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -29,6 +30,9 @@ const useStyles = makeStyles(theme => ({
         //     left: theme.spacing(-2),
         // }
     },
+    footer: {
+        background: theme.palette.topBar.main
+    }
 }))
 
 const HideOnScroll = ({ children }) => {
@@ -49,29 +53,34 @@ const Main = ({ route }) => {
     const classes = useStyles();
 
     return (
-        <Fragment>
-            <HideOnScroll>
-                <AppBar
-                    position={'fixed'}
-                    elevation={6}
-                    className={classes.root}
-                >
-                    <Container maxWidth="lg">
-                        <Topbar />
+        <PerfectScrollbar options={{ suppressScrollX: true }}>
+            <div>
+                <HideOnScroll>
+                    <AppBar
+                        position={'fixed'}
+                        elevation={6}
+                        className={classes.root}
+                    >
+                        <Container maxWidth="lg">
+                            <Topbar />
+                        </Container>
+                    </AppBar>
+                </HideOnScroll>
+                <main>
+                    <Suspense fallback={<LinearProgress />}>
+                        <Box height={{ xs: 96, sm: 104 }} />
+                        {renderRoutes(route.routes)}
+                    </Suspense>
+                    <br /><br /><br /><br /><br /><br />
+                    <Divider />
+                </main>
+                <footer className={classes.footer}>
+                    <Container maxWidth="lg" >
+                        <Footer />
                     </Container>
-                </AppBar>
-            </HideOnScroll>
-            <main>
-                <Suspense fallback={<LinearProgress />}>
-                    <Box height={{ xs: 56, sm: 64 }} />
-                    {renderRoutes(route.routes)}
-                </Suspense>
-                <Divider />
-            </main>
-            <Container maxWidth="lg">
-                <Footer />
-            </Container>
-        </Fragment>
+                </footer>
+            </div>
+        </PerfectScrollbar>
     );
 };
 
