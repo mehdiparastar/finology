@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import Slider from 'react-slick';
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { Avatar, Box, Button, Card, CardActions, CardContent, Grid, IconButton, Typography, Paper, CardHeader, colors, CardActionArea, CardMedia } from '@material-ui/core';
+import { Avatar, Box, Button, Card, CardActions, CardContent, Grid, IconButton, Typography, Paper, CardHeader, colors, CardActionArea, CardMedia, FormControlLabel, Checkbox } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import darleneChabratLogo from 'assets/people/darlene-chabrat.jpg'
@@ -11,6 +11,9 @@ import gaetanHoussinLogo from 'assets/people/gaetan-houssin.jpg'
 import jeromeBoudotLogo from 'assets/people/jerome-boudot.jpg'
 import jeromeMahuetLogo from 'assets/people/jerome-mahuet.jpg'
 import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon';
+import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+import { useState } from 'react';
 
 const useStyles = makeStyles(theme => ({
     avatar: {
@@ -26,7 +29,7 @@ const useStyles = makeStyles(theme => ({
         color: theme.palette.topBar.main,
         fontWeight: 'bold',
         maxWidth: theme.spacing(40),
-        lineHeight: theme.spacing(0.2),        
+        lineHeight: theme.spacing(0.2),
     },
 
     slider: {
@@ -41,7 +44,8 @@ const useStyles = makeStyles(theme => ({
         width: '100%'
     },
     cardRoot: {
-        height: 200,
+        height: 350,
+        minWidth: 250,
         margin: theme.spacing(2)
     },
     avatar: {
@@ -66,8 +70,11 @@ const useStyles = makeStyles(theme => ({
         fontWeight: 'bold'
     },
     media: {
-        height: 140,
+        height: 260,
     },
+    checkBtn: {
+        padding: theme.spacing(0, 1)
+    }
 }))
 
 const peoplesList = [
@@ -103,20 +110,21 @@ const peoplesList = [
     },
     {
         logo: jeromeBoudotLogo,
-        title: 'jerome boudot',
+        title: 'Negin khandan',
         subTitle: 'CEO of Cisco',
         description: 'Search the world\'s information, including webpages, images, videos and more. Google has many special features to help you find exactly what you\'re looking for.',
     },
     {
         logo: jeromeMahuetLogo,
-        title: 'Network Admin',
+        title: 'mehdi parastar',
         subTitle: 'Web Developer',
         description: 'HubSpot offers a full platform of marketing, sales, customer service, and CRM software — plus the methodology, resources, and support — to help businesses.',
     },
 ]
 
-const PeopleList = props => {
+const PeopleList = ({ setOpenEdit, setOpenAdd }) => {
     const classes = useStyles();
+    const [selectedPeople, setSelectedPeople] = useState(peoplesList.reduce((p, c) => ({ ...p, [c.title]: false }), {}))
 
     return (
         <div>
@@ -131,36 +139,48 @@ const PeopleList = props => {
                         <Typography variant="h3" className={classes.title}>Our important people is listed here</Typography>
                     </div>
                     <Grid item >
-                        <Button size="small" className={classes.actionEditButton} variant="contained">Edit</Button>
-                        <Button size="small" className={classes.actionAddButton} variant="contained">Add</Button>
+                        <Button disabled={!Object.values(selectedPeople).includes(true)} onClick={() => setOpenEdit(true)} size="small" className={classes.actionEditButton} variant="contained">Edit</Button>
+                        <Button onClick={() => setOpenAdd(true)} size="small" className={classes.actionAddButton} variant="contained">Add</Button>
                     </Grid>
                 </Grid>
                 <Grid container justify="center" alignItems="center" item xs={12} direction="row">
-                    {peoplesList.map((item, index) => <ItemCard key={index} item={item} />)}
+                    {peoplesList.map((item, index) => <ItemCard key={index} item={item} selected={selectedPeople} setSelected={setSelectedPeople} />)}
                 </Grid>
             </Grid>
         </div>
     )
 }
 
-function ItemCard(props) {
+function ItemCard({ item, selected, setSelected }) {
     const classes = useStyles();
 
+    const handleChange = (event) => {
+        setSelected({
+            ...peoplesList.reduce((p, c) => ({ ...p, [c.title]: false }), {}),
+            [item.title]: event.target.checked
+        })
+    }
+
+    console.log(selected[item.title])
     return (
-        <Grid item xs={6} md={3} lg={2}>
+        <Grid item xs={6} md={4} lg={3}>
             <Card className={classes.cardRoot}>
                 <CardActionArea>
                     <CardMedia
                         className={classes.media}
-                        image={props.item.logo}
-                        title={props.item.title}
-                    />
+                        image={item.logo}
+                        title={item.title}
+                    >
+                        <FormControlLabel className={classes.checkBtn}
+                            control={<Checkbox checked={selected[item.title] === true} onChange={handleChange} icon={<RadioButtonUncheckedIcon />} checkedIcon={<CheckCircleIcon />} name="checkedH" />}
+                        />
+                    </CardMedia>
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="h2">
-                            {props.item.title}
+                            {item.title}
                         </Typography>
                         <Typography variant="body2" color="textSecondary" component="p">
-                            {props.item.subTitle}
+                            {item.subTitle}
                         </Typography>
                     </CardContent>
                 </CardActionArea>

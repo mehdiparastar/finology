@@ -5,76 +5,55 @@ import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 import Logo from 'svg/logos/Logo';
+import { makeStyles } from '@material-ui/styles';
 
-const Footer = () => (
-  <Grid container spacing={2}>
-    <Grid item xs={12}>
-      <Box
-        display={'flex'}
-        justifyContent={'space-between'}
-        alignItems={'center'}
-        width={'100%'}
-        flexDirection={{ xs: 'column', sm: 'row' }}
-      >
-        <Box
-          display={'flex'}
-          component="a"
-          underline="none"
-          href="/"
-          title="webbee"
-          height={45}
-          width={45}
-        >
-          <Logo height={'100%'} width={'100%'} />
-        </Box>
-        <Box display="flex" flexWrap={'wrap'} alignItems={'center'}>
-          <Box marginTop={1} marginRight={2}>
-            <Link
-              underline="none"
-              component="a"
-              href="/"
-              color="textPrimary"
-              variant={'subtitle2'}
-            >
-              Home
-            </Link>
-          </Box>
-          <Box marginTop={1} marginRight={2}>
-            <Link
-              underline="none"
-              component="a"
-              href="/docs-introduction"
-              color="textPrimary"
-              variant={'subtitle2'}
-            >
-              About Us
-            </Link>
-          </Box>
-        </Box>
-      </Box>
-    </Grid>
-    <Grid item xs={12}>
+const useStyles = makeStyles(theme => ({
+  footerText: { color: theme.palette.white }
+}))
+
+const Footer = () => {
+  const classes = useStyles();
+
+  return (
+    <Grid container spacing={8} alignItems="center" justify="flex-start">
+      <Grid item xs={1}>
+        <Logo height={'100%'} width={'100%'} />
+      </Grid>
       <Typography
-        align={'center'}
-        variant={'subtitle2'}
-        color="textSecondary"
+        align="center"
+        variant="h3"
         gutterBottom
+        className={classes.footerText}
       >
-        &copy; Webbee. 2021, Maccarian. All rights reserved
+        Easy Work
       </Typography>
-      <Typography
-        align={'center'}
-        variant={'caption'}
-        color="textSecondary"
-        component={'p'}
-      >
-        When you visit or interact with our sites, services or tools, we or our
-        authorised service providers may use cookies for storing information to
-        help provide you with a better, faster and safer experience and for
-        marketing purposes.
+
+      <Grid item xs={2}></Grid>
+
+      <Grid item xs={3}>
+        <Typography
+          align='left'
+          variant="body1"
+          component={'p'}
+          className={classes.footerText}
+        >
+          <b>Address</b><br />52-1,Jalan Aman Hijau , Taman Overseas Union ,58200 Kuala Lumpur ,Wilayah Persekutuan Kuala Lumpur
       </Typography>
+      </Grid>
+      <Grid item xs={1}></Grid>
+      <Grid item xs={3}>
+        <Typography
+          align='left'
+          variant="body1"
+          component={'p'}
+          className={classes.footerText}
+        >
+          <b>Contact</b><br />03-7451 5283<br />
+          <b>Fax</b><br />03-7451 5283
+      </Typography>
+      </Grid>
     </Grid>
-  </Grid>
-);
+  );
+}
 
 export default Footer;

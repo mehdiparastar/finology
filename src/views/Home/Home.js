@@ -1,11 +1,12 @@
-import { CardMedia, Grid, Typography } from '@material-ui/core'
+import { Button, CardMedia, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid, TextField, Typography } from '@material-ui/core'
 import { Page } from 'common'
 import React, { Fragment } from 'react'
 import dashboard from 'assets/images/dashboard.png'
 import signIn from 'assets/images/sign-in.png'
-import { Hero, Partners, PeopleList, Customers, ContactUs } from './components'
+import { Hero, Partners, PeopleList, Customers, ContactUs, AddPeople, EditPeople } from './components'
 import { makeStyles } from '@material-ui/styles';
 import Image from 'material-ui-image'
+import { useState } from 'react'
 
 
 const useStyles = makeStyles(theme => ({
@@ -28,6 +29,8 @@ const useStyles = makeStyles(theme => ({
 
 const Home = props => {
     const classes = useStyles();
+    const [openEditPeople, setOpenEditPeople] = useState(false)
+    const [openAddPeople, setOpenAddPeople] = useState(false)
 
     return (
         <Fragment>
@@ -67,7 +70,7 @@ const Home = props => {
                     </Grid>
 
                     <Grid item xs={12}>
-                        <PeopleList />
+                        <PeopleList setOpenEdit={setOpenEditPeople} setOpenAdd={setOpenAddPeople} />
                     </Grid>
 
                     <Grid item xs={12}>
@@ -79,8 +82,11 @@ const Home = props => {
                     </Grid>
                 </Grid>
             </Page>
+            <EditPeople open={openEditPeople} setOpen={setOpenEditPeople} />
+            <AddPeople open={openAddPeople} setOpen={setOpenAddPeople} />
         </Fragment>
     )
 }
+
 
 export default Home
