@@ -95,7 +95,7 @@ const Hero = () => {
               alignItems={'center'}
               maxHeight={450}
             >
-              <img className={classes.banner} src={banner} />
+              <img alt="banner" className={classes.banner} src={banner} />
             </Box>
           </Grid>
         </Grid>

@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 import React, { lazy } from 'react'
 import { Main } from './layouts'
 

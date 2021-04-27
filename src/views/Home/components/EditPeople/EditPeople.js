@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react'
 import { Avatar, Badge, Button, colors, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid, IconButton, TextField, Typography } from '@material-ui/core'
 import { makeStyles, withStyles } from '@material-ui/styles';
-import PersonIcon from '@material-ui/icons/Person';
 import EditIcon from '@material-ui/icons/Edit';
 import img from 'assets/people/manuela-faveri.jpg'
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';

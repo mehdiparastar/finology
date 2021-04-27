@@ -1,11 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useTheme } from '@material-ui/core/styles';
 
 const Logo = ({ width = 45, height = 70 }) => {
-  const theme = useTheme();
-  const colorPrimaryMain = theme.palette.primary.main;
-  const colorPrimaryDark = theme.palette.primary.main;
+
   return (
     <svg
       width={width}

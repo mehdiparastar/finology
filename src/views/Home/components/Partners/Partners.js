@@ -1,8 +1,5 @@
-import React, { Fragment } from 'react'
-import Slider from 'react-slick';
-import { useTheme } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { Avatar, Box, Button, Card, CardActions, CardContent, Grid, IconButton, Typography, Paper, CardHeader, colors } from '@material-ui/core';
+import React from 'react'
+import { Card, CardContent, Grid, IconButton, Typography, CardHeader, colors, Avatar } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import darleneChabratLogo from 'assets/people/darlene-chabrat.jpg'
@@ -13,12 +10,6 @@ import jeromeMahuetLogo from 'assets/people/jerome-mahuet.jpg'
 import Carousel from 'react-material-ui-carousel';
 
 const useStyles = makeStyles(theme => ({
-    avatar: {
-        // border: '1px solid red',
-        width: theme.spacing(6),
-        height: theme.spacing(6),
-        background: 'red'
-    },
     img: {
         fill: 'white '
     },

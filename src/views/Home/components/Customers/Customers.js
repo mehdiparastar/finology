@@ -1,16 +1,6 @@
-import React, { Fragment } from 'react'
-import Slider from 'react-slick';
-import { useTheme } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { Avatar, Box, Button, Card, CardActions, CardContent, Grid, IconButton, Typography, Paper, CardHeader, colors, CardActionArea, CardMedia } from '@material-ui/core';
+import React from 'react'
+import { Avatar, Grid, Typography, colors } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import darleneChabratLogo from 'assets/people/darlene-chabrat.jpg'
-import davidCampionLogo from 'assets/people/david-campion.jpg'
-import gaetanHoussinLogo from 'assets/people/gaetan-houssin.jpg'
-import jeromeBoudotLogo from 'assets/people/jerome-boudot.jpg'
-import jeromeMahuetLogo from 'assets/people/jerome-mahuet.jpg'
-import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon';
 import airbnbIcon from 'assets/images/airbnb.png'
 import appleIcon from 'assets/images/apple.PNG'
 import facebookIcon from 'assets/images/facebook.PNG'
@@ -22,10 +12,8 @@ import teslaIcon from 'assets/images/tesla.PNG'
 
 const useStyles = makeStyles(theme => ({
     avatar: {
-        // border: '1px solid red',
         width: theme.spacing(8),
         height: theme.spacing(8),
-        // background: 'pink'
     },
     img: {
         fill: 'white '
@@ -42,7 +30,6 @@ const useStyles = makeStyles(theme => ({
         border: '1px solid red',
         width: '100%',
         height: '100%'
-        // maxWidth: 100
     },
     sliderContainer: {
         padding: '40px',
@@ -97,7 +84,7 @@ const Customers = props => {
                     <Typography variant="h3" className={classes.title}>We've worked with</Typography>
                 </Grid>
                 <Grid container justify="center" alignItems="center" item xs={12} direction="row" spacing={1}>
-                    {customersList.map((item, index) => <Grid item xs={4} md={1}><Avatar className={classes.avatar} key={index} src={item.logo} /></Grid>)}
+                    {customersList.map((item, index) => <Grid key={index} item xs={4} md={1}><Avatar className={classes.avatar} key={index} src={item.logo} /></Grid>)}
                 </Grid>
             </Grid>
         </div>

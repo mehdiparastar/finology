@@ -3,7 +3,7 @@ import useRouter from 'hooks/useRouter'
 import { makeStyles } from '@material-ui/styles';
 import { Link as RouterLink } from 'react-router-dom'
 import topBarItems from 'utils/navbarItems'
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import Hidden from '@material-ui/core/Hidden';
 import Box from '@material-ui/core/Box';
 import IconButton from '@material-ui/core/IconButton';
@@ -11,8 +11,9 @@ import Logo from 'svg/logos/Logo';
 import { Button, Grid } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import clsx from 'clsx'
+import MenuIcon from '@material-ui/icons/Menu';
 
-const useStyles = makeStyles(theme => ({ 
+const useStyles = makeStyles(theme => ({
   topBarItems: {
     color: theme.palette.white
   },
@@ -24,7 +25,7 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const Topbar = () => {
+const Topbar = ({ onSidebarOpen }) => {
   const { location } = useRouter()
   const classes = useStyles();
 
@@ -58,9 +59,16 @@ const Topbar = () => {
         </Hidden>
       </Grid>
       <Grid item >
-        <IconButton>
-          <SearchIcon className={classes.searchIcon} />
-        </IconButton>
+        <Hidden only={['xs']}>
+          <IconButton>
+            <SearchIcon className={classes.searchIcon} />
+          </IconButton>
+        </Hidden>
+        <Hidden only={['sm', 'md', 'lg', 'xl']}>
+          <IconButton onClick={onSidebarOpen}>
+            <MenuIcon className={classes.searchIcon} />
+          </IconButton>
+        </Hidden>
       </Grid>
     </Grid>
   );

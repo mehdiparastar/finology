@@ -1,10 +1,6 @@
-import React, { Fragment } from 'react'
-import Slider from 'react-slick';
-import { useTheme } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { Avatar, Box, Button, Card, CardActions, CardContent, Grid, IconButton, Typography, Paper, CardHeader, colors, CardActionArea, CardMedia, FormControlLabel, Checkbox } from '@material-ui/core';
+import React from 'react'
+import { Avatar, Button, Card, CardContent, Grid, IconButton, Typography, colors, CardActionArea, CardMedia, FormControlLabel, Checkbox } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
-import FavoriteIcon from '@material-ui/icons/Favorite';
 import darleneChabratLogo from 'assets/people/darlene-chabrat.jpg'
 import davidCampionLogo from 'assets/people/david-campion.jpg'
 import gaetanHoussinLogo from 'assets/people/gaetan-houssin.jpg'
@@ -16,12 +12,12 @@ import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import { useState } from 'react';
 
 const useStyles = makeStyles(theme => ({
-    avatar: {
-        // border: '1px solid red',
-        width: theme.spacing(6),
-        height: theme.spacing(6),
-        background: 'pink'
-    },
+    // avatar: {
+    //     // border: '1px solid red',
+    //     width: theme.spacing(6),
+    //     height: theme.spacing(6),
+    //     background: 'pink'
+    // },
     img: {
         fill: 'white '
     },
@@ -161,7 +157,6 @@ function ItemCard({ item, selected, setSelected }) {
         })
     }
 
-    console.log(selected[item.title])
     return (
         <Grid item xs={6} md={4} lg={3}>
             <Card className={classes.cardRoot}>

@@ -1,32 +1,12 @@
-import React, { Fragment } from 'react'
-import Slider from 'react-slick';
-import { useTheme } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { Avatar, Box, Button, Card, CardActions, CardContent, Grid, IconButton, Typography, Paper, CardHeader, colors, CardActionArea, CardMedia, TextField, TextareaAutosize, MenuItem } from '@material-ui/core';
+import React from 'react'
+import { Button, Grid, Typography, Paper, colors, MenuItem, TextField } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import darleneChabratLogo from 'assets/people/darlene-chabrat.jpg'
-import davidCampionLogo from 'assets/people/david-campion.jpg'
-import gaetanHoussinLogo from 'assets/people/gaetan-houssin.jpg'
-import jeromeBoudotLogo from 'assets/people/jerome-boudot.jpg'
-import jeromeMahuetLogo from 'assets/people/jerome-mahuet.jpg'
-import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon';
-import airbnbIcon from 'assets/images/airbnb.png'
-import appleIcon from 'assets/images/apple.PNG'
-import facebookIcon from 'assets/images/facebook.PNG'
-import googleIcon from 'assets/images/google.PNG'
-import microsoftIcon from 'assets/images/microsoft.PNG'
-import nvidiaIcon from 'assets/images/nvidia.PNG'
-import samsungIcon from 'assets/images/samsung.PNG'
-import teslaIcon from 'assets/images/tesla.PNG'
 import { Markers } from 'common';
 
 const useStyles = makeStyles(theme => ({
     avatar: {
-        // border: '1px solid red',
         width: theme.spacing(8),
         height: theme.spacing(8),
-        // background: 'pink'
     },
     img: {
         fill: 'white '
@@ -45,7 +25,6 @@ const useStyles = makeStyles(theme => ({
         border: '1px solid red',
         width: '100%',
         height: '100%'
-        // maxWidth: 100
     },
     sliderContainer: {
         padding: '40px',
@@ -82,7 +61,7 @@ const useStyles = makeStyles(theme => ({
         flexDirection: 'column',
         padding: theme.spacing(4),
         width: 445,
-        height:'100%',
+        height: '100%',
         '& p': {
             color: theme.palette.topBar.main,
         },
@@ -95,7 +74,6 @@ const useStyles = makeStyles(theme => ({
         color: theme.palette.white,
         width: theme.spacing(14),
         alignSelf: 'flex-end'
-        // fontWeight: 'bold'
     },
     marker: {
         width: 445,
@@ -103,16 +81,6 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
-const customersList = [
-    { logo: airbnbIcon },
-    { logo: appleIcon },
-    { logo: facebookIcon },
-    { logo: googleIcon },
-    { logo: microsoftIcon },
-    { logo: nvidiaIcon },
-    { logo: samsungIcon },
-    { logo: teslaIcon },
-]
 
 const Customers = props => {
     const classes = useStyles();
